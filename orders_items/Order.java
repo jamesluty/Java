@@ -6,6 +6,11 @@ public class Order {
     private boolean ready;
     private ArrayList<Item> items = new ArrayList<>();
 
+    public Order(){
+        this.name = "guest";
+        this.ready = false;
+    }
+
     public Order(String name) {
         this.name = name;
         this.ready = false;
@@ -23,7 +28,7 @@ public class Order {
         return total;
     }
 
-    public boolean getReady() {
+    public boolean getStatusMessage() {
         return this.ready;
     }
 

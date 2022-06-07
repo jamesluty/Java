@@ -13,6 +13,8 @@ public class TestOrders {
         Order order2 = new Order("Jimmy");
         Order order3 = new Order("Noah");
         Order order4 = new Order("Sam");
+        Order order5 = new Order();
+        Order order6 = new Order();
 
         order1.addItem(item1);
         order1.addItem(item3);
