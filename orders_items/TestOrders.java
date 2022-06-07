@@ -28,7 +28,7 @@ public class TestOrders {
         // Use this example code to test various orders' updates
         System.out.printf("%s your total is $%.2f\n", order1.getName(), order1.getTotal());
         System.out.printf("Total: %s\n", order1.getTotal());
-        System.out.printf("Ready: %s\n", order1.getReady());
+        System.out.printf("Ready: %s\n", order1.getStatusMessage());
         // System.out.printf("Items: %s\n", order1.getItems());
         // System.out.printf("Items: %s\n", order1.displayOrder());
         order1.displayOrder();
