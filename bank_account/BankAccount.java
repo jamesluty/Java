@@ -1,8 +1,8 @@
 import java.util.Random;
 
 public class BankAccount{
-    private double checkingBalance = 0;
-    private double savingsBalance = 0;
+    private double checkingBalance;
+    private double savingsBalance;
     private static int numOfAccounts = 0;
     private static double totalBalance = 0;
     private String accountNumber;
@@ -10,6 +10,13 @@ public class BankAccount{
     public BankAccount(){
         this.checkingBalance = 0;
         this.savingsBalance = 0;
+        this.accountNumber = getAccountNumber();
+        numOfAccounts++;
+    }
+
+    public BankAccount(int checking, int savings){
+        this.checkingBalance = checking;
+        this.savingsBalance = savings;
         this.accountNumber = getAccountNumber();
         numOfAccounts++;
     }
