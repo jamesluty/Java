@@ -10,14 +10,14 @@ public class BankAccount{
     public BankAccount(){
         this.checkingBalance = 0;
         this.savingsBalance = 0;
-        this.accountNumber = getAccountNumber();
+        this.accountNumber = createAccountNumber();
         numOfAccounts++;
     }
 
     public BankAccount(int checking, int savings){
         this.checkingBalance = checking;
         this.savingsBalance = savings;
-        this.accountNumber = getAccountNumber();
+        this.accountNumber = createAccountNumber();
         numOfAccounts++;
     }
 
@@ -65,7 +65,7 @@ public class BankAccount{
         return totalBalance;
     }
 
-    private String getAccountNumber(){
+    private String createAccountNumber(){
         Random randInt = new Random();
         String accountNumber = "";
         for(int i=1; i<=10; i++){
@@ -73,5 +73,9 @@ public class BankAccount{
         }
 
         return accountNumber;
+    }
+
+    public String getAccountNumber() {
+        return this.accountNumber;
     }
 }
