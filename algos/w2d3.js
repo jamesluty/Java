@@ -70,7 +70,7 @@ class SLL {
     }
 
     average(){
-        let sum = this.head.data;
+        let sum = 0;
         let count = 0;
         let runner = this.head;
         while(runner.next !== null){
@@ -78,6 +78,8 @@ class SLL {
             runner = runner.next;
             count++;
         }
+        sum += runner.data;
+        count++
         return sum/count;
     }
 
