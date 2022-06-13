@@ -66,10 +66,14 @@ class BinarySearchTree {
      * @returns {number} The smallest integer from this tree.
      */
     min(current = this.root) {
-        while (current.left) {
-            current = current.left
+        if(this.isEmpty()){
+            return null;
+        } else {
+            while (current.left) {
+                current = current.left
+            }
+            console.log(current.data)
         }
-        console.log(current.data)
         return current;
     }
 
