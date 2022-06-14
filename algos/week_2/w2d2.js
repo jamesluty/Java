@@ -23,18 +23,18 @@ class BSTNode {
     }
 }
 
-    /**
-   * Represents an ordered tree of nodes where the data of left nodes are <= to
-   * their parent and the data of nodes to the right are > their parent's data.
-   */
+/**
+ * Represents an ordered tree of nodes where the data of left nodes are <= to
+ * their parent and the data of nodes to the right are > their parent's data.
+ */
 class BinarySearchTree {
     constructor() {
         /**
-       * Just like the head of a linked list, this is the start of our tree which
-       * branches downward from here.
-       *
-       * @type {BSTNode|null}
-       */
+         * Just like the head of a linked list, this is the start of our tree which
+         * branches downward from here.
+         *
+         * @type {BSTNode|null}
+         */
         this.root = null;
     }
 
@@ -43,15 +43,15 @@ class BinarySearchTree {
         if (!node) {
             return;
         }
-    
+
         spaceCnt += spaceIncr;
         this.print(node.right, spaceCnt);
-    
+
         console.log(
             " ".repeat(spaceCnt < spaceIncr ? 0 : spaceCnt - spaceIncr) +
             `${node.data}`
         );
-    
+
         this.print(node.left, spaceCnt);
     }
 
@@ -63,7 +63,7 @@ class BinarySearchTree {
      * - Space: O(?).
      * @returns {boolean} Indicates if this tree is empty.
      */
-    isEmpty() {}
+    isEmpty() { }
 
     /**
      * Retrieves the smallest integer data from this tree.
@@ -75,10 +75,10 @@ class BinarySearchTree {
      */
     min(current = this.root) {
         while (current) {
-            current = current.left;
             if (current.left == null) {
                 return current.data;
             }
+            current = current.left;
         }
         return null;
     }
@@ -92,11 +92,11 @@ class BinarySearchTree {
      * @returns {number} The smallest integer from this tree.
      */
     minRecursive(current = this.root) {
-        if(!current.isEmpty){
-            if(current.left == null){
-        return current.data;
-        }
-        return this.minRecursive(current.left);
+        if (!current.isEmpty) {
+            if (current.left == null) {
+                return current.data;
+            }
+            return this.minRecursive(current.left);
         } else return null;
     }
 
@@ -110,10 +110,10 @@ class BinarySearchTree {
      */
     max(current = this.root) {
         while (current) {
-            current = current.right;
             if (current.right == null) {
                 return current.data;
             }
+            current = current.right;
         }
         return null;
     }
@@ -127,11 +127,11 @@ class BinarySearchTree {
      * @returns {number} The largest integer from this tree.
      */
     maxRecursive(current = this.root) {
-        if(!current.isEmpty){
-            if(current.right == null){
-            return current.data;
-        }
-        return this.maxRecursive(current.right);
+        if (!current.isEmpty) {
+            if (current.right == null) {
+                return current.data;
+            }
+            return this.maxRecursive(current.right);
         }
         else return null;
     }
@@ -146,29 +146,30 @@ class BinarySearchTree {
      * @returns {boolean} Indicates if the searchVal was found.
      */
     /* threeLevelTree 
-            root
-            10
-            /   \
-        5     15
-        / \    / \
-    2   6  13  
+          root
+          10
+        /   \
+      5     15
+    / \    / \
+  2   6  13  
   */
     contains(searchVal) {
-        if(!this.root) return false;
+        if (!this.root) return false;
         let runner = this.root;
-        while(runner){
-        if(runner.data == searchVal) return true;
-        if(runner.data > searchVal && runner.left != null){
-            runner = runner.left;
-        } else if(runner.data < searchVal && runner.right != null) {
-            runner = runner.right;
-        } else {
-            return false;
-        }
+
+        while (runner) {
+            if (runner.data == searchVal) return true;
+            if (runner.data > searchVal && runner.left != null) {
+                runner = runner.left;
+            } else if (runner.data < searchVal && runner.right != null) {
+                runner = runner.right;
+            } else {
+                return false;
+            }
         }
         return false;
     }
-    
+
     /**
      * Determines if this tree contains the given searchVal.
      * - Time: O(?).
@@ -177,25 +178,26 @@ class BinarySearchTree {
      * @returns {boolean} Indicates if the searchVal was found.
      */
     /* threeLevelTree 
-            root
-            10
-            /   \
-        5     15
-        / \    / \
-    2   6  13  
+          root
+          10
+        /   \
+      5     15
+    / \    / \
+  2   6  13  
   */
     containsRecursive(searchVal, current = this.root) {
-        if(!this.root) return false;
-        if(current.data == searchVal) return true;
-        if(current.data < searchVal && current.right != null){
-        return this.containsRecursive(searchVal, current.right);
-        } else if (current.data > searchVal && current.left != null){
-        return this.containsRecursive(searchVal, current.left);
+        if (!this.root) return false;
+        if (current.data == searchVal) return true;
+
+        if (current.data < searchVal && current.right != null) {
+            return this.containsRecursive(searchVal, current.right);
+        } else if (current.data > searchVal && current.left != null) {
+            return this.containsRecursive(searchVal, current.left);
         } else {
-        return false;
+            return false;
         }
     }
-    
+
     /**
      * Calculates the range (max - min) from the given startNode.
      * - Time: O(?).
@@ -205,7 +207,7 @@ class BinarySearchTree {
      *    startNode is the root or not.
      */
     range(startNode = this.root) {
-        if(!this.root) return null;
+        if (!this.root) return null;
         return this.max() - this.min();
     }
 }
@@ -217,7 +219,7 @@ oneNodeTree.root = new BSTNode(10);
 /* twoLevelTree
         root
         10
-    /   \
+      /   \
     5     15
 */
 const twoLevelTree = new BinarySearchTree();
@@ -228,9 +230,9 @@ twoLevelTree.root.right = new BSTNode(15);
 /* threeLevelTree 
         root
         10
-    /   \
+      /   \
     5     15
-/ \    / \
+  / \    / \
 2   6  13  
 */
 const threeLevelTree = new BinarySearchTree();
@@ -245,19 +247,19 @@ console.log(threeLevelTree.containsRecursive(15));
 console.log(threeLevelTree.containsRecursive(7));
 console.log(threeLevelTree.range());
 console.log(twoLevelTree.range());
-// console.log(oneNodeTree.range());
+console.log(oneNodeTree.range());
 
 /* fullTree
                     root
                 <-- 25 -->
-            /            \
+              /            \
             15             50
-        /    \         /    \
+          /    \         /    \
         10     22      35     70
-    /   \   /  \    /  \   /  \
+      /   \   /  \    /  \   /  \
     4    12  18  24  31  44 66  90
-  */
-  /***************** Uncomment after insert method is created. ****************/
+*/
+/***************** Uncomment after insert method is created. ****************/
   // const fullTree = new BinarySearchTree();
   // fullTree
   //   .insert(25)
