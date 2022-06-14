@@ -207,8 +207,7 @@ class BinarySearchTree {
      *    startNode is the root or not.
      */
     range(startNode = this.root) {
-        if (!this.root) return null;
-        return this.max() - this.min();
+        return (!startNode) ? null : this.max(startNode) - this.min(startNode);
     }
 }
 
