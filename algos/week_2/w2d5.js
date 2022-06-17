@@ -324,12 +324,12 @@ class BinarySearchTree {
     4    12  18  24  31  44 66  90
 */
     size(node = this.root) {
-        if(!node) return;
+        if (!node) return 0;
 
-        let count = this.toArrPreorder();
-        let output = count.length;
-        
-        return output;
+        let size = 0;
+        size += node.left && this.size(node.left);
+        size += node.right && this.size(node.right);
+        return size + 1;
     }
 
     /**
@@ -351,7 +351,11 @@ class BinarySearchTree {
     4    12  18  24  31  44 66  90
 */
     height(node = this.root) {
+        if (!node) return 0;
 
+        let heightLeft = node.left ? this.height(node.left) : 0;
+        let heightRight = node.right ? this.height(node.right) : 0;
+        return heightLeft > heightRight ? heightLeft + 1 : heightRight + 1;
     }
 
     /**
@@ -373,19 +377,11 @@ class BinarySearchTree {
     4    12  18  24  31  44 66  90
 */
     isFull(node = this.root) {
-        // if (!this.root) return false;
-        console.log(node.data)
-        if(node.right && !node.left){
-            console.log("false left");
-            return false;
-        } else if (node.left && !node.right){
-            console.log("false right");
-            return false;
-        }
+        if (!node) return true;
 
-        node.left && this.isFull(node.left);
-        node.right && this.isFull(node.right);
-        return true;
+        let isFullLeft = node.left ? this.isFull(node.left) : false;
+        let isFullRight = node.right ? this.isFull(node.right) : false;
+        return isFullLeft === isFullRight ? true : false;
     }
 }
 
