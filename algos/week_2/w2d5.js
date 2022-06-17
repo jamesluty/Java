@@ -375,6 +375,8 @@ class BinarySearchTree {
         10     22      35     70
       /   \   /  \    /  \   /  \
     4    12  18  24  31  44 66  90
+   /
+  2
 */
     isFull(node = this.root) {
         if (!node) return true;
